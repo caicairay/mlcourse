@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{minted}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+\date{}
+\begin{document}
+ 
+
+\title{Homework 0: LaTeX}
+\author{%replace with your name
+Machine Learning and Computational Statistics}
+
+\maketitle
+\textbf{Due: N/A}
+
+\textbf{Instructions: }Your answers to the questions below, including plots and mathematical
+ work, should be submitted as a single PDF file.  It's preferred that you write your answers using software that typesets mathematics (e.g.LaTeX, LyX, or MathJax via iPython), though if you need to you may scan handwritten work.  You may find the \href{https://github.com/gpoore/minted}{minted} package convenient for including source code in your LaTeX document.  If you are using LyX, then the \href{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}{listings} package tends to work better.
+
+\section{Minted Package}
+The \href{https://github.com/gpoore/minted}{minted} package is convenient for including source code in your LaTeX document.
+
+\section{Including Python Code from File}
+Here we're extracting lines 4 through 13 from the file code.py.
+\inputminted[firstline=4, lastline=13, breaklines=True]{python}{code.py}
+
+\section{Python Code Inline}
+Here we're extracting lines 4 through 13 from the file code.py.
+\begin{minted}[breaklines=True]{python}
+def dotProduct(d1, d2):
+    """
+    @param dict d1: a feature vector represented by a mapping from a feature (string) to a weight (float).
+    @param dict d2: same as d1
+    @return float: the dot product between d1 and d2
+    """
+    if len(d1) < len(d2):
+        return dotProduct(d2, d1)
+    else:
+        return sum(d1.get(f, 0) * v for f, v in d2.items())
+\end{minted}
+% --------------------------------------------------------------
+ 
+\end{document}

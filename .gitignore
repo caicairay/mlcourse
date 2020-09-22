@@ -16,3 +16,5 @@ stubs
 publishLecture.sh
 lectures-2016
 .Rproj.user
+*.wav
+*.pyc
