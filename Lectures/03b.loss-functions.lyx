@@ -286,7 +286,7 @@
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -315,7 +315,7 @@ pr}{P}
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -744,16 +744,16 @@ optional, use only with long paper titles
 \end_layout
 
 \begin_layout Author
-Julia Kempe & David S.
+David S.
  Rosenberg 
 \end_layout
 
 \begin_layout Date
-February 11, 2019
+February 6, 2018
 \end_layout
 
 \begin_layout Institute
-CDS, NYU
+New York University
 \end_layout
 
 \begin_layout Standard
@@ -773,7 +773,12 @@ Just in article version
 \begin_inset Note Note
 status open
 
-\begin_layout Plain Layout
+\begin_layout Itemize
+Take a look at plot_huber_vs_ridge.py script -- maybe better than what I
+ have
+\end_layout
+
+\begin_layout Itemize
 Need to mention the terms 
 \begin_inset Quotes eld
 \end_inset
@@ -793,7 +798,7 @@ hard classification
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
 ADD IN log-cosh loss for regression (twice differentiable, but like Huber)
  – http://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/lecturenote10.ht
 ml and Psuedo-huber
