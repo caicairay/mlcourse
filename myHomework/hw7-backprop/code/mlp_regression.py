@@ -18,9 +18,32 @@ class MLPRegression(BaseEstimator, RegressorMixin):
         self.step_size = step_size
 
         # Build computation graph
+        # data
         self.x = nodes.ValueNode(node_name="x") # to hold a vector input
         self.y = nodes.ValueNode(node_name="y") # to hold a scalar response
         ## TODO
+        # parameters
+        self.W1 = nodes.ValueNode(node_name="W1")
+        self.b1 = nodes.ValueNode(node_name="b1")
+        self.W2 = nodes.ValueNode(node_name="W2")
+        self.b2 = nodes.ValueNode(node_name="b2")
+        # hidden layers
+        self.L = nodes.AffineNode(self.W1, self.x, self.b1, node_name = "L")
+        self.h = nodes.TanhNode(self.L, node_name = "h")
+        # prediction
+        self.prediction = nodes.AffineNode(self.W2, self.h, self.b2, 
+                                           node_name = "prediction")
+        # objective
+        self.objective = nodes.SquaredL2DistanceNode(self.prediction, self.y, 
+                                                     node_name = "objective")
+        # Group nodes into types to construct computation graph function
+        self.inputs = [self.x]
+        self.outcomes = [self.y]
+        self.parameters = [self.W1, self.b1, self.W2, self.b2]
+
+        self.graph = graph.ComputationGraphFunction(self.inputs, self.outcomes,
+                                                    self.parameters, self.prediction,
+                                                    self.objective)
 
     def fit(self, X, y):
         num_instances, num_ftrs = X.shape
@@ -28,7 +51,10 @@ class MLPRegression(BaseEstimator, RegressorMixin):
 
         ## TODO: Initialize parameters (small random numbers -- not all 0, to break symmetry )
         s = self.init_param_scale
-        init_values = None ## TODO
+        init_values = {"W1": np.random.rand(1,num_ftrs)*s,
+                       "W2": np.random.rand(1,num_ftrs)*s,
+                       "b1": np.random.rand(1)*s,
+                       "b2": np.random.radn(1)*s}
 
         self.graph.set_parameters(init_values)
 
